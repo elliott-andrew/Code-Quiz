@@ -1,5 +1,11 @@
+// Variables
+var scoreCount = 0;
+var timeLeft = 30;
+timeLeft = parseInt(timeLeft);
+
 // DOM Elements (depencies)
 var site1El = document.querySelector(".site1");
+var timerEl = document.getElementById("time-left")
 var myButton = document.createElement("button");
 var myButton1 = document.createElement("button");
 var myButton2 = document.createElement("button");
@@ -8,6 +14,7 @@ var myButton3 = document.createElement("button");
 // Data
 site1El.children[0].textContent = "Are you ready to test your knowledge?";
 site1El.setAttribute("style", "text-align: center; font-family: 'VT323', monospace; font-size: 4rem;");
+timerEl.textContent = timeLeft;
 myButton.textContent = "Start";
 myButton.setAttribute("class", "btn");
 myButton.addEventListener("click", questionOne);
@@ -24,9 +31,11 @@ function questionOne() {
     myButton1.textContent = "Hypertext Markdown Language";
     myButton1.setAttribute("class", "btn");
     myButton1.addEventListener("click", questionTwo);
+    myButton1.onclick = scoreCount++;
 
     myButton2.textContent = "Hypertext Markup Language";
     myButton2.setAttribute("class", "btn");
+    myButton2.setAttribute("id", "answer")
     myButton2.addEventListener("click", questionTwo);
 
     myButton3.textContent = "Hypertext Marky Mark Language";
@@ -39,12 +48,14 @@ function questionOne() {
 }
 
 function questionTwo() {
+    console.log(scoreCount);
     site1El.children[0].textContent = "What does CSS stand for?";
     site1El.setAttribute("style", "display:block; text-align: center; font-family: 'VT323', monospace; font-size: 4rem;");
 
     myButton1.textContent = "Cascading Stylesheet";
     myButton1.setAttribute("class", "btn");
     myButton1.addEventListener("click", questionThree);
+    myButton1.onclick = scoreCount++;
 
     myButton2.textContent = "Flowing Stylesheet";
     myButton2.setAttribute("class", "btn");
@@ -60,6 +71,7 @@ function questionTwo() {
 }
 
 function questionThree() {
+    console.log(scoreCount);
     site1El.children[0].textContent = "What is Javascript?";
     site1El.setAttribute("style", "display:block; text-align: center; font-family: 'VT323', monospace; font-size: 4rem;");
 
@@ -74,6 +86,7 @@ function questionThree() {
     myButton3.textContent = "A programing language";
     myButton3.setAttribute("class", "btn");
     myButton3.addEventListener("click", questionFour);
+    myButton3.onclick = scoreCount++;
 
     site1El.appendChild(myButton1);
     site1El.appendChild(myButton2);
@@ -87,6 +100,7 @@ function questionFour() {
     myButton1.textContent = "Document Object Model";
     myButton1.setAttribute("class", "btn");
     myButton1.addEventListener("click", questionFive);
+    myButton1.onclick = scoreCount++;
 
     myButton2.textContent = "Document Thingamajig";
     myButton2.setAttribute("class", "btn");
@@ -116,6 +130,7 @@ function questionFive() {
     myButton3.textContent = "omg";
     myButton3.setAttribute("class", "btn");
     myButton3.addEventListener("click", resultsPage);
+    myButton3.onclick = scoreCount++;
 
     site1El.appendChild(myButton1);
     site1El.appendChild(myButton2);
