@@ -13,4 +13,5 @@ site1El.appendChild(myButton);
 
 function codeQuiz() {
     myButton.style.display = "none";
+    site1El.style.display = "none";
 }
