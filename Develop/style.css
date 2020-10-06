@@ -30,6 +30,15 @@ h2 {
     font-size: 3rem;
 }
 
+
+.btn {
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    border: white solid 1px;
+    background-color: black;
+    color: white;
+}
+
 main p {
     font-family: 'VT323', monospace;
     font-size: 3rem;
