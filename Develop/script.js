@@ -21,7 +21,7 @@ function questionOne() {
     site1El.children[0].textContent = "What does HTML stand for?";
     site1El.setAttribute("style", "display:block; text-align: center; font-family: 'VT323', monospace; font-size: 4rem;");
 
-    myButton1.textContent = "Hypertext Markup Language";
+    myButton1.textContent = "Hypertext Markdown Language";
     myButton1.setAttribute("class", "btn");
     myButton1.addEventListener("click", questionTwo);
 
@@ -29,7 +29,7 @@ function questionOne() {
     myButton2.setAttribute("class", "btn");
     myButton2.addEventListener("click", questionTwo);
 
-    myButton3.textContent = "Hypertext Markup Language";
+    myButton3.textContent = "Hypertext Marky Mark Language";
     myButton3.setAttribute("class", "btn");
     myButton3.addEventListener("click", questionTwo);
 
@@ -39,21 +39,18 @@ function questionOne() {
 }
 
 function questionTwo() {
-    myButton.style.display = "none";
-    site1El.style.display = "none";
-
     site1El.children[0].textContent = "What does CSS stand for?";
     site1El.setAttribute("style", "display:block; text-align: center; font-family: 'VT323', monospace; font-size: 4rem;");
 
-    myButton1.textContent = "Hypertext Markup Language";
+    myButton1.textContent = "Cascading Stylesheet";
     myButton1.setAttribute("class", "btn");
     myButton1.addEventListener("click", questionThree);
 
-    myButton2.textContent = "Hypertext Markup Language";
+    myButton2.textContent = "Flowing Stylesheet";
     myButton2.setAttribute("class", "btn");
     myButton2.addEventListener("click", questionThree);
 
-    myButton3.textContent = "Hypertext Markup Language";
+    myButton3.textContent = "Shading Stylesheet";
     myButton3.setAttribute("class", "btn");
     myButton3.addEventListener("click", questionThree);
 
@@ -63,21 +60,18 @@ function questionTwo() {
 }
 
 function questionThree() {
-    myButton.style.display = "none";
-    site1El.style.display = "none";
-
-    site1El.children[0].textContent = "What does Javascript stand for?";
+    site1El.children[0].textContent = "What is Javascript?";
     site1El.setAttribute("style", "display:block; text-align: center; font-family: 'VT323', monospace; font-size: 4rem;");
 
-    myButton1.textContent = "Hypertext Markup Language";
+    myButton1.textContent = "A typeface";
     myButton1.setAttribute("class", "btn");
     myButton1.addEventListener("click", questionFour);
 
-    myButton2.textContent = "Hypertext Markup Language";
+    myButton2.textContent = "A coffee brand";
     myButton2.setAttribute("class", "btn");
     myButton2.addEventListener("click", questionFour);
 
-    myButton3.textContent = "Hypertext Markup Language";
+    myButton3.textContent = "A programing language";
     myButton3.setAttribute("class", "btn");
     myButton3.addEventListener("click", questionFour);
 
@@ -87,21 +81,18 @@ function questionThree() {
 }
 
 function questionFour() {
-    myButton.style.display = "none";
-    site1El.style.display = "none";
-
     site1El.children[0].textContent = "What does DOM stand for?";
     site1El.setAttribute("style", "display:block; text-align: center; font-family: 'VT323', monospace; font-size: 4rem;");
 
-    myButton1.textContent = "Hypertext Markup Language";
+    myButton1.textContent = "Document Object Model";
     myButton1.setAttribute("class", "btn");
     myButton1.addEventListener("click", questionFive);
 
-    myButton2.textContent = "Hypertext Markup Language";
+    myButton2.textContent = "Document Thingamajig";
     myButton2.setAttribute("class", "btn");
     myButton2.addEventListener("click", questionFive);
 
-    myButton3.textContent = "Hypertext Markup Language";
+    myButton3.textContent = "Donut Object Mmmmm";
     myButton3.setAttribute("class", "btn");
     myButton3.addEventListener("click", questionFive);
 
@@ -114,18 +105,18 @@ function questionFive() {
     myButton.style.display = "none";
     site1El.style.display = "none";
 
-    site1El.children[0].textContent = "What does Console stand for?";
+    site1El.children[0].textContent = "Which is not a terminal command?";
     site1El.setAttribute("style", "display:block; text-align: center; font-family: 'VT323', monospace; font-size: 4rem;");
 
-    myButton1.textContent = "Hypertext Markup Language";
+    myButton1.textContent = "mkdir";
     myButton1.setAttribute("class", "btn");
     myButton1.addEventListener("click", questionOne);
 
-    myButton2.textContent = "Hypertext Markup Language";
+    myButton2.textContent = "cd";
     myButton2.setAttribute("class", "btn");
     myButton2.addEventListener("click", questionOne);
 
-    myButton3.textContent = "Hypertext Markup Language";
+    myButton3.textContent = "omg";
     myButton3.setAttribute("class", "btn");
     myButton3.addEventListener("click", questionOne);
 
