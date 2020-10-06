@@ -1,5 +1,4 @@
 // DOM Elements (depencies)
-
 var site1El = document.querySelector(".site1");
 var myButton = document.createElement("button");
 var myButton1 = document.createElement("button");
@@ -9,10 +8,11 @@ var myButton3 = document.createElement("button");
 // Data
 site1El.children[0].textContent = "Are you ready to test your knowledge?";
 site1El.setAttribute("style", "text-align: center; font-family: 'VT323', monospace; font-size: 4rem;");
-myButton.textContent = "I'm a button";
-myButton.setAttribute("style", "font-family: 'VT323', monospace; font-size: 2rem; border: white solid 1px; background-color: black; color: white");
+myButton.textContent = "Start";
+myButton.setAttribute("class", "btn");
 myButton.addEventListener("click", questionOne);
 site1El.appendChild(myButton);
+
 
 function questionOne() {
     myButton.style.display = "none";
@@ -102,25 +102,37 @@ function questionFour() {
 }
 
 function questionFive() {
-    myButton.style.display = "none";
-    site1El.style.display = "none";
-
     site1El.children[0].textContent = "Which is not a terminal command?";
     site1El.setAttribute("style", "display:block; text-align: center; font-family: 'VT323', monospace; font-size: 4rem;");
 
     myButton1.textContent = "mkdir";
     myButton1.setAttribute("class", "btn");
-    myButton1.addEventListener("click", questionOne);
+    myButton1.addEventListener("click", resultsPage);
 
     myButton2.textContent = "cd";
     myButton2.setAttribute("class", "btn");
-    myButton2.addEventListener("click", questionOne);
+    myButton2.addEventListener("click", resultsPage);
 
     myButton3.textContent = "omg";
     myButton3.setAttribute("class", "btn");
-    myButton3.addEventListener("click", questionOne);
+    myButton3.addEventListener("click", resultsPage);
 
     site1El.appendChild(myButton1);
     site1El.appendChild(myButton2);
     site1El.appendChild(myButton3);
+}
+
+function resultsPage() {
+    myButton1.style.display = "none";
+    myButton2.style.display = "none";
+
+    site1El.children[0].textContent = "Results";
+    site1El.setAttribute("style", "display:block; text-align: center; font-family: 'VT323', monospace; font-size: 4rem;");
+
+    myButton3.textContent = "Retry";
+    myButton3.setAttribute("class", "btn");
+    myButton3.addEventListener("click", questionOne);
+
+    site1El.appendChild(myButton3);
+
 }
