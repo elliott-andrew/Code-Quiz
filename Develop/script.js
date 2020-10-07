@@ -14,30 +14,74 @@
 
 // Dependencies (DOM elements)
 var questionEl = document.querySelector("#question-area");
+var questionDisplay = document.querySelector("#question")
 var answerArea = document.querySelector("#answer-area");
+var answerButton = document.querySelector("#submit-button")
 var startButton = document.querySelector("#submit-button");
 
 // Data
 var scoreCount = 0;
 var timeLeft = 30;
 // All messages display to user
-var questions = {
-    intro: "Are you read to test your knowledge?",
-    questionOne: "What does HTML stand for?",
-    questionTwo: ["What does CSS stand for?"],
-    questionThree: ["What is Javascript?"],
-    questionFour: ["What does DOM stand for?"],
-    questionFive: ["Which option below is not a terminal command?"]
-}
+var questions = [
+    {
+        question: "What does HTML stand for?",
+        answer1: "Hypertext Markdown Language",
+        answer2: "Hypertext Markup Language",
+        answer3: "Hypertext Marky Mark Language",
+        correct: "Hypertext Markup Language"
+    },
+
+    {
+        question: "What does CSS stand for?",
+        answer1: "Cascading Stylesheet",
+        answer2: "Flowing Stylesheet",
+        answer3: "Shading Stylesheet",
+        correct: "Cascading Stylesheet"
+    },
+
+    {
+        question: "What is Javascript",
+        answer1: "A typeface",
+        answer2: "A coffee brand",
+        answer3: "A programming language",
+        correct: "A programming language"
+    },
+
+    {
+        question: "What does DOM stand for?",
+        answer1: "Document Object Model",
+        answer2: "Document Thingamajig",
+        answer3: "Donut Object Mmmmmm",
+        correct: "Document Object Model",
+    }
+
+]
 
 // Helper functions
 // Begin the game
-startButton.addEventListener("click", questions);
+startButton.addEventListener("click", beginQuestions);
 // hides the submit button and runs the questions function
-function questions() {
-    startButton.style.display = "none"
+function beginQuestions() {
+    startButton.style.display = "none";
+    renderQuestions();
+
 
 };
+
+function renderQuestions() {
+    // go through the list of questions
+    questions.questionList.forEach(function (question) {
+        // create an p
+        var p = document.createElement("p");
+        // add the questions to the p
+        p.textContent = question;
+        // add the invitee class to the li
+        p.classList.add("question");
+        // place the li in the invitee list
+        questionEl.appendChild(li);
+    })
+}
 
 // Display question one
 // function questions() {
