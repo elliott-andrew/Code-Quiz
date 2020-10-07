@@ -1,59 +1,26 @@
-* {
-    font-size: 8px;
-}
-
-header {
-    display: block;
-    margin: 5%;
-    
-}
-
-#time-left,
-header p {
-    font-family: 'VT323', monospace;
-    font-size: 2.5rem;
-
-} 
-
 header h1 {
     font-family: 'Press Start 2P', cursive;
-    font-size: 7rem;
+    font-size: 4rem;
     text-align: center;
-    line-height: 8rem;
+    color: #292724;
 }
 
-h2 {
-    font-family: 'VT323', monospace;
-    font-size: 3rem;
-}
-
-
-.btn {
-    font-family: 'VT323', monospace;
-    font-size: 2rem;
-    border: white solid 1px;
-    background-color: black;
+button {
+    background-color: #292724;
     color: white;
-}
-
-main p {
     font-family: 'VT323', monospace;
-    font-size: 3rem;
+    font-size: 1.5rem;
+
+}
+#message-area {
+    border: black solid 1px;
+    text-align: center;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    color: #292724;
 }
 
-.question-body {
-    border: white solid 1px;
-    background-color: black;
-    color: white;
-}
-
-#question-section {
-    min-height: 300px;
-}
-
-.answer {
-    background-color: #393D47; 
-    border: white solid 1px; 
-    color:white;
+#answer-area {
+    border: black solid 1px;
     text-align: center;
 }

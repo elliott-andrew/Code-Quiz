@@ -21,26 +21,41 @@
     <!-- Header -->
     <header class="container">
         <div class="row">
-            <div class="col-sm-3 mt-5" id="high-scores">
-                <p>View High Scores</p>
-            </div>
-            <div class="col-sm-6 mt-5">
+            <div class="col-sm-12 mt-5 text-center">
                 <h1>Code Quiz</h1>
-            </div>
-            <div class="col-sm-3 mt-5 text-right" id="timer">
-                <p><span id="time-left"></span> seconds remaining</p>
             </div>
         </div>
     </header>
 
-    <div id="main">
-        <div class="sites">
-            <div class="site1">
-                <h2></h2>
+    <main class="container" id="main">
+        <!-- High score link and time left -->
+        <section class="row">
+            <div class="col-6 pl-5" id="high-scores">
+                <p>View High Scores</p>
+            </div>
+            <div class="col-6 pr-5 text-right" id="timer">
+                <p><span id="time-left"></span> seconds remaining</p>
+            </div>
+        </section>
+        <!-- question section / intro message -->
+        <section class="row">
+            <div class="col" id="message-area">
+            </div>
+        </section>
+        <!-- answer options / begin button -->
+        <section class="row">
+            <div class="col" id="answer-area">
+
+                <button id="submit-button" type="submit">Start</button>
 
             </div>
-        </div>
-    </div>
+        </section>
+        <!-- win/lose notification -->
+        <section class="row mx-auto">
+            <div class="col" id="results">
+            </div>
+        </section>
+    </main>
 
 
 </body>
