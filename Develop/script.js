@@ -13,13 +13,22 @@
 
 
 // Dependencies (DOM elements)
-var messageArea = document.querySelector("#message-area");
+var questionEl = document.querySelector("#question-area");
 var answerArea = document.querySelector("#answer-area");
 var startButton = document.querySelector("#submit-button");
 
 // Data
 var scoreCount = 0;
 var timeLeft = 30;
+// All messages display to user
+var questions = {
+    intro: "Are you read to test your knowledge?",
+    questionOne: "What does HTML stand for?",
+    questionTwo: ["What does CSS stand for?"],
+    questionThree: ["What is Javascript?"],
+    questionFour: ["What does DOM stand for?"],
+    questionFive: ["Which option below is not a terminal command?"]
+}
 
 // Helper functions
 // Begin the game
