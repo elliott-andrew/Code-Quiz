@@ -67,7 +67,7 @@ function startGame() {
         questionDisplay.textContent = yourQuestion.question;
     }
 
-    // display the answers
+    // display the answers and check if correct
     function renderAnswers() {
         // resets and clears the answer section for each click
         answerArea.innerHTML = "";
@@ -106,7 +106,7 @@ function startGame() {
             console.log("correct:", questions[questionIndex].correct);
             // if the data-answer is equal to the correct button number
             if (answerData === questions[questionIndex].correct) {
-                // add 1 to your score
+                // increase score by 1
                 scoreCount++;
                 // else deduct time from timer
             }
@@ -130,9 +130,13 @@ function startGame() {
             console.log("data:", answerData);
             console.log("correct:", questions[questionIndex].correct);
             if (answerData === questions[questionIndex].correct) {
+                // increase score by 1
                 scoreCount++;
+                // else deduct time from timer
             }
+            // add 1 to the question index to cycle to next question
             questionIndex++;
+            // if question index is 3 or less
             if (questionIndex < 4) {
                 // run next question
                 renderQuestions();
@@ -141,6 +145,7 @@ function startGame() {
             } else {
                 alert("yay");
             }
+            // else render results
         })
         answer3.addEventListener("click", function () {
             console.log(questionIndex);
@@ -148,9 +153,12 @@ function startGame() {
             console.log("data:", answerData);
             console.log("correct:", questions[questionIndex].correct);
             if (answerData === questions[questionIndex].correct) {
+                // increase score by 1
                 scoreCount++;
             }
+            // add 1 to the question index to cycle to next question
             questionIndex++;
+            // if question index is 3 or less
             if (questionIndex < 4) {
                 // run next question
                 renderQuestions();
@@ -159,11 +167,15 @@ function startGame() {
             } else {
                 alert("yay");
             }
+            // else render results
 
         })
 
     }
 
+    function renderresults() {
+
+    };
     renderQuestions();
     renderAnswers();
 
