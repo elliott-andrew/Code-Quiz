@@ -4,11 +4,12 @@ var questionDisplay = document.querySelector("#question")
 var answerArea = document.querySelector("#answer-area");
 var answerButton = document.querySelector("#submit-button")
 var startButton = document.querySelector("#submit-button");
-var scoreDisplay
+var scoreDisplay = document.querySelector(".yourScore")
 
 // Data
 var scoreCount = 0;
 var timeLeft = 30;
+
 // All questions and answers
 var questions = [
     {
@@ -44,7 +45,6 @@ var questions = [
     }
 
 ]
-console.log(questions.length);
 
 // Number of questions in quiz
 var numQuestions = questions.length;
@@ -100,38 +100,35 @@ function startGame() {
         answerArea.appendChild(answer3);
         // on click, +1 current index number and rerun both the question and answers functions
         answer1.addEventListener("click", function () {
-            findCorrent()
+            // findCorrent()
             questionIndex++;
             renderQuestions();
             renderAnswers();
+            var answerData = parseInt(answer1.getAttribute("data-answer"));
+            console.log(answerData);
+            console.log(questions[questionIndex].correct);
+            if (answerData === questions[questionIndex].correct) {
+                alert("yay");
 
-        })
-
-        answer2.addEventListener("click", function () {
-            findCorrent()
-            questionIndex++;
-            renderQuestions();
-            renderAnswers();
-
-        })
-
-        answer3.addEventListener("click", function () {
-            findCorrent()
-            questionIndex++;
-            renderQuestions();
-            renderAnswers();
-
-        })
-
-        function findCorrent() {
-            // pulls the current index number, adds it to the corrent asnwer variable and attaches both to correctAnswer
-            correctAnswer = questions[questionIndex].correct
-            console.log(correctAnswer)
-            // checks if the button selected matches the correct answer
-            if (answer1.getAttribute("data-answer") == correctAnswer || answer2.getAttribute("data-answer") == correctAnswer || answer3.getAttribute("data-answer") == correctAnswer) {
-                alert("yay!");
             }
-        }
+
+        })
+        answer2.addEventListener("click", function () {
+            // findCorrent()
+            questionIndex++;
+            renderQuestions();
+            renderAnswers();
+            console.log(answer2.getAttribute("data-answer"));
+
+        })
+        answer3.addEventListener("click", function () {
+            // findCorrent()
+            questionIndex++;
+            renderQuestions();
+            renderAnswers();
+            console.log(answer3.getAttribute("data-answer"));
+
+        })
 
     }
 
