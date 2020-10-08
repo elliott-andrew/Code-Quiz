@@ -10,17 +10,16 @@ button {
     color: white;
     font-family: 'VT323', monospace;
     font-size: 1.5rem;
+    margin: 15px;
 
 }
-#message-area {
-    border: black solid 1px;
+#question {
     text-align: center;
     font-family: 'VT323', monospace;
-    font-size: 1.5rem;
+    font-size: 3rem;
     color: #292724;
 }
 
 #answer-area {
-    border: black solid 1px;
     text-align: center;
 }
