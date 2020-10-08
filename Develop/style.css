@@ -47,6 +47,15 @@ p {
 }
 
 .results {
+    text-align: center;
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: #292724;
+    margin-top: 30px;
+}
+
+.input-group {
     display: block;
+    text-align: center;
 }
 

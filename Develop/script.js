@@ -7,6 +7,7 @@ var nameInput = document.querySelector("#name");
 var signUpButton = document.querySelector("#sign-up");
 var msgDiv = document.querySelector("#msg");
 var userNameSpan = document.querySelector("#user-name");
+var scoreSpan = document.querySelector("#user-score");
 var resultsSection = document.querySelector("#results");
 
 // Data
@@ -220,7 +221,8 @@ function startGame() {
 
         function renderLastRegistered() {
             var lastName = localStorage.getItem("name");
-            if (!lastName) {
+            var lastScore = localStorage.getItem("score");
+            if (!lastName || !lastScore) {
                 return;
             }
             userNameSpan.textContent = lastName;
