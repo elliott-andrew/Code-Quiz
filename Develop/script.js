@@ -4,6 +4,7 @@ var questionDisplay = document.querySelector("#question")
 var answerArea = document.querySelector("#answer-area");
 var answerButton = document.querySelector("#submit-button")
 var startButton = document.querySelector("#submit-button");
+var scoreDisplay
 
 // Data
 var scoreCount = 0;
@@ -123,10 +124,10 @@ function startGame() {
         })
 
         function findCorrent() {
-            // pulls the current index number, adds it to the questions variable and attaches both to yourQuestion
+            // pulls the current index number, adds it to the corrent asnwer variable and attaches both to correctAnswer
             correctAnswer = questions[questionIndex].correct
             console.log(correctAnswer)
-            // replaces questionDisplay with the content of the current question
+            // checks if the button selected matches the correct answer
             if (answer1.getAttribute("data-answer") == correctAnswer || answer2.getAttribute("data-answer") == correctAnswer || answer3.getAttribute("data-answer") == correctAnswer) {
                 alert("yay!");
             }
@@ -138,40 +139,3 @@ function startGame() {
     renderAnswers();
 
 }
-
-
-// function questionOne() {
-//     questionDisplay.innerHTML = "";
-//     var h2 = document.createElement("h2");
-//     h2.textContent = questions[0].question;
-//     h2.classList.add("question")
-//     questionDisplay.appendChild(h2);
-
-// }
-
-// function questionTwo() {
-//     questionDisplay.innerHTML = "";
-//     var h2 = document.createElement("h2");
-//     h2.textContent = questions[1].question;
-//     h2.classList.add("question")
-//     questionDisplay.appendChild(h2);
-
-// }
-
-// function questionThree() {
-//     questionDisplay.innerHTML = "";
-//     var h2 = document.createElement("h2");
-//     h2.textContent = questions[2].question;
-//     h2.classList.add("question")
-//     questionDisplay.appendChild(h2);
-
-// }
-
-// function questionFour() {
-//     questionDisplay.innerHTML = "";
-//     var h2 = document.createElement("h2");
-//     h2.textContent = questions[3].question;
-//     h2.classList.add("question")
-//     questionDisplay.appendChild(h2);
-
-// }
