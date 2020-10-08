@@ -58,6 +58,14 @@ function renderQuestions() {
     var currentQuestionIndex = Math.floor(questionIndex * numQuestions);
     yourQuestion = questions[currentQuestionIndex]
     questionDisplay.textContent = yourQuestion.question
+    questionIndex++;
+    if (questionIndex > 3) {
+        renderresults();
+    }
+
+}
+
+function renderresults() {
 
 }
 
