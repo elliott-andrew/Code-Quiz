@@ -5,11 +5,12 @@ var answerArea = document.querySelector("#answer-area");
 var answerButton = document.querySelector("#submit-button")
 var startButton = document.querySelector("#submit-button");
 var scoreDisplay = document.querySelector("#results")
+var timeDisplay = document.querySelector("#time-left")
 
 // Data
 // Initial score
 var scoreCount = 0;
-var timeLeft = 30;
+var secondsLeft = 30;
 
 // All questions and answers
 var questions = [
@@ -59,6 +60,23 @@ startButton.addEventListener("click", function () {
 });
 
 function startGame() {
+    function setTime() {
+        var timerInterval = setInterval(function () {
+            // knock a second off the clock
+            secondsLeft--;
+            // display the new countdown time
+            timeDisplay.textContent = secondsLeft + " seconds left";
+
+            // check if we are out of time
+            if (secondsLeft === 0) {
+                // if so, sotp the timer
+                clearInterval(timerInterval);
+                // trigger the message
+                renderResults();
+            }
+
+        }, 1000);
+    }
     // Display and cycle through questions
     function renderQuestions() {
         // pulls the current index number, adds it to the questions variable and attaches both to yourQuestion
@@ -98,84 +116,42 @@ function startGame() {
         answerArea.appendChild(answer2);
         answerArea.appendChild(answer3);
         // Click event listener
-        answer1.addEventListener("click", function () {
-            console.log(questionIndex);
-            // parse the data-answer to return a number
-            var answerData = parseInt(answer1.getAttribute("data-answer"));
-            console.log("data:", answerData);
-            console.log("correct:", questions[questionIndex].correct);
-            // if the data-answer is equal to the correct button number
-            if (answerData === questions[questionIndex].correct) {
-                // increase score by 1
-                scoreCount++;
-                // else deduct time from timer
-            }
-            // add 1 to the question index to cycle to next question
-            questionIndex++;
-            // if question index is 3 or less
-            if (questionIndex < 4) {
-                // run next question
-                renderQuestions();
-                // run next series of answers
-                renderAnswers();
-            } else {
-                alert("yay");
-            }
-            // else render results
+        // This is listening for a click in the answer area
+        answerArea.addEventListener("click", function (event) {
+            // event.target picks up EXACTLY what was clicked
+            if (event.target.matches("button")) {
+                // if so, get the index of the button
+                var selectedAnswer = parseInt(event.target.getAttribute("data-answer"));
+                console.log(selectedAnswer);
+                console.log(questions[questionIndex].correct)
+                if (selectedAnswer === questions[questionIndex].correct) {
+                    scoreCount++
+                    console.log("Your ", scoreCount);
+                }
 
-        })
-        answer2.addEventListener("click", function () {
-            console.log(questionIndex);
-            var answerData = parseInt(answer2.getAttribute("data-answer"));
-            console.log("data:", answerData);
-            console.log("correct:", questions[questionIndex].correct);
-            if (answerData === questions[questionIndex].correct) {
-                // increase score by 1
-                scoreCount++;
-                // else deduct time from timer
             }
-            // add 1 to the question index to cycle to next question
-            questionIndex++;
-            // if question index is 3 or less
-            if (questionIndex < 4) {
-                // run next question
-                renderQuestions();
-                // run next series of answers
-                renderAnswers();
-            } else {
-                alert("yay");
-            }
-            // else render results
-        })
-        answer3.addEventListener("click", function () {
-            console.log(questionIndex);
-            var answerData = parseInt(answer3.getAttribute("data-answer"));
-            console.log("data:", answerData);
-            console.log("correct:", questions[questionIndex].correct);
-            if (answerData === questions[questionIndex].correct) {
-                // increase score by 1
-                scoreCount++;
-            }
-            // add 1 to the question index to cycle to next question
-            questionIndex++;
-            // if question index is 3 or less
-            if (questionIndex < 4) {
-                // run next question
-                renderQuestions();
-                // run next series of answers
-                renderAnswers();
-            } else {
-                alert("yay");
-            }
-            // else render results
 
-        })
+        });
+    }
+
+    function renderResults() {
+        // empty out the time element
+        timeDisplay.textContent = " ";
+        answerArea.innerHTML = " ";
+
+        questionDisplay.textContent = scoreCount + "/4 correct!";
+        // create a restart button
+        var restart = document.createElement("button");
+        // set the type to submit
+        restart.setAttribute("type", "submit")
+        // set id of submit-button
+        restart.setAttribute("id", "submit-button")
+        // Place
+        answerArea.appendChild(restart);
 
     }
 
-    function renderresults() {
-
-    };
+    setTime();
     renderQuestions();
     renderAnswers();
 
