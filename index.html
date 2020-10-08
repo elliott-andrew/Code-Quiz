@@ -22,7 +22,7 @@
     <header class="container">
         <div class="row">
             <div class="col-sm-12 mt-5 text-center">
-                <h1>Code Quiz</h1>
+                <h1><a href="#">Code Quiz</a></h1>
             </div>
         </div>
     </header>
@@ -50,9 +50,29 @@
             </div>
         </section>
         <!-- win/lose notification -->
-        <section class="row mx-auto">
-            <div class="col" id="results">
+        <section class="row mx-auto" id="high-scores">
+            <div class="col results-hide" id="results">
+                <div class="clearfix">
+                    <div class="card">
+                        <h2>Sign Up</h2>
+                        <form method="POST">˜
+                            <div class="input-group">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="name" placeholder="name" />
+                            </div>
 
+                            <div id="msg"></div>
+                            <button id="sign-up">Sign Up</button>
+                        </form>
+                    </div>
+
+                    <div class="card">
+                        <h2>Last Registered User:</h2>
+                        <p><strong>Name:</strong> <span id="user-name"></span></p>
+                        <p><strong>Score:</strong> <span id="user-score"></span></p>
+
+                    </div>
+                </div>
             </div>
         </section>
     </main>

@@ -1,11 +1,13 @@
 // Dependencies (DOM elements)
-var questionEl = document.querySelector("#question-area");
 var questionDisplay = document.querySelector("#question")
 var answerArea = document.querySelector("#answer-area");
-var answerButton = document.querySelector("#submit-button")
 var startButton = document.querySelector("#submit-button");
-var scoreDisplay = document.querySelector("#results")
 var timeDisplay = document.querySelector("#time-left")
+var nameInput = document.querySelector("#name");
+var signUpButton = document.querySelector("#sign-up");
+var msgDiv = document.querySelector("#msg");
+var userNameSpan = document.querySelector("#user-name");
+var resultsSection = document.querySelector("#results");
 
 // Data
 // Initial score
@@ -83,7 +85,6 @@ function startGame() {
         yourQuestion = questions[questionIndex]
         // replaces questionDisplay with the content of the current question
         questionDisplay.textContent = yourQuestion.question;
-        console.log("before", questionIndex);
     }
 
     // display the answers and check if correct
@@ -98,8 +99,11 @@ function startGame() {
         yourAnswers = questions[questionIndex];
         // adds current answer options to buttons
         answer1.textContent = yourAnswers.answer1;
+        console.log("answer options:", yourAnswers.answer1);
         answer2.textContent = yourAnswers.answer2;
+        console.log("answer options:", yourAnswers.answer2);
         answer3.textContent = yourAnswers.answer3;
+        console.log("answer options:", yourAnswers.answer3);
         // set type attribute of submit to each button
         answer1.setAttribute("type", "submit")
         answer2.setAttribute("type", "submit")
@@ -117,47 +121,126 @@ function startGame() {
         answerArea.appendChild(answer2);
         answerArea.appendChild(answer3);
         // Click event listener
-        // This is listening for a click in the answer area
-        answerArea.addEventListener("click", function (event) {
-            // event.target picks up EXACTLY what was clicked
-            if (event.target.matches("button")) {
-                // if so, get the index of the button
-                var selectedAnswer = parseInt(event.target.getAttribute("data-answer"));
-                console.log(selectedAnswer);
-                console.log(questions[questionIndex].correct)
-                if (selectedAnswer === questions[questionIndex].correct) {
-                    scoreCount++
-                    console.log("Your ", scoreCount);
-                }
-                questionIndex++;
-                // if there are less than 4 remaining questions
-                if (questionIndex < 4) {
-                    // display the questions
-                    renderQuestions();
-                    // display the answer
-                    renderAnswers;
-                } else {
-                    renderResults();
-                }
-
+        // Click event listener
+        answer1.addEventListener("click", function () {
+            console.log(questionIndex);
+            // parse the data-answer to return a number
+            var answerData = parseInt(answer1.getAttribute("data-answer"));
+            // if the data-answer is equal to the correct button number
+            if (answerData === questions[questionIndex].correct) {
+                // increase score by 1
+                scoreCount++;
+                // else deduct time from timer
             }
-            console.log("after", questionIndex);
-        });
+            // add 1 to the question index
+            questionIndex++;
+            // if question index is 3 or less
+            if (questionIndex < 4) {
+                // run next question
+                renderQuestions();
+                // run next series of answers
+                renderAnswers();
+            } else {
+                // else render results
+                renderResults();
+            }
+
+        })
+        answer2.addEventListener("click", function () {
+            console.log(questionIndex);
+            var answerData = parseInt(answer2.getAttribute("data-answer"));
+            console.log("data:", answerData);
+            console.log("correct:", questions[questionIndex].correct);
+            if (answerData === questions[questionIndex].correct) {
+                // increase score by 1
+                scoreCount++;
+                // else deduct time from timer
+            }
+            // add 1 to the question index to cycle to next question
+            questionIndex++;
+            // if question index is 3 or less
+            if (questionIndex < 4) {
+                // run next question
+                renderQuestions();
+                // run next series of answers
+                renderAnswers();
+            } else {
+                // else render results
+                renderResults();
+            }
+
+        })
+        answer3.addEventListener("click", function () {
+            console.log(questionIndex);
+            var answerData = parseInt(answer3.getAttribute("data-answer"));
+            console.log("data:", answerData);
+            console.log("correct:", questions[questionIndex].correct);
+            if (answerData === questions[questionIndex].correct) {
+                // increase score by 1
+                scoreCount++;
+            }
+            // add 1 to the question index to cycle to next question
+            questionIndex++;
+            // if question index is 3 or less
+            if (questionIndex < 4) {
+                // run next question
+                renderQuestions();
+                // run next series of answers
+                renderAnswers();
+            } else {
+                // else render results
+                renderResults();
+            }
+        })
+
     }
 
     function renderResults() {
         // empty out the time element
         answerArea.innerHTML = " ";
-
+        resultsSection.setAttribute("class", "col results");
         questionDisplay.textContent = scoreCount + "/4 correct!";
         // create a restart button
         var restart = document.createElement("button");
         // set the type to submit
-        restart.setAttribute("type", "submit")
+        restart.setAttribute("type", "submit");
         // set id of submit-button
-        restart.setAttribute("id", "submit-button")
+        restart.setAttribute("id", "submit-button");
+        restart.setAttribute("onClick", "window.location.href=window.location.href")
+        restart.textContent = "Restart"
         // Place
         answerArea.appendChild(restart);
+
+        renderLastRegistered();
+
+        function displayMessage(type, message) {
+            msgDiv.textContent = message;
+            msgDiv.setAttribute("class", type);
+        }
+
+        function renderLastRegistered() {
+            var lastName = localStorage.getItem("name");
+            if (!lastName) {
+                return;
+            }
+            userNameSpan.textContent = lastName;
+
+        }
+
+        signUpButton.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            var name = document.querySelector("#name").value;
+
+            if (name === "") {
+                displayMessage("error", "Name cannot be blank");
+            } else {
+                displayMessage("success", "Registered successfully");
+                // Save email and password to localStorage and render the last registered.
+                localStorage.setItem("name", name);
+                renderLastRegistered();
+            }
+        });
 
     }
 

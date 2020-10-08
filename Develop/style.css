@@ -5,6 +5,15 @@ header h1 {
     color: #292724;
     margin-bottom: 15px;
 }
+header h1 a {
+    text-decoration: none;
+    color: #292724;
+}
+
+header h1 a:hover {
+    text-decoration: none;
+    color: #292724;
+}
 
 button {
     background-color: #292724;
@@ -32,3 +41,12 @@ p {
     font-size: 1rem;
     color: #292724;
 }
+
+.results-hide {
+    display: none;
+}
+
+.results {
+    display: block;
+}
+
