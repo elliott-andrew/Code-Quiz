@@ -4,9 +4,10 @@ var questionDisplay = document.querySelector("#question")
 var answerArea = document.querySelector("#answer-area");
 var answerButton = document.querySelector("#submit-button")
 var startButton = document.querySelector("#submit-button");
-var scoreDisplay = document.querySelector(".yourScore")
+var scoreDisplay = document.querySelector("#results")
 
 // Data
+// Initial score
 var scoreCount = 0;
 var timeLeft = 30;
 
@@ -76,11 +77,9 @@ function startGame() {
         var answer3 = document.createElement("button");
         // pulls the current index number, adds it to the questions variable and attaches both to yourAnswers
         yourAnswers = questions[questionIndex];
-        // adds current answer1 to answer1 button 
+        // adds current answer options to buttons
         answer1.textContent = yourAnswers.answer1;
-        // adds current answer2 to answer2 button 
         answer2.textContent = yourAnswers.answer2;
-        // adds current answer3 to answer3 button 
         answer3.textContent = yourAnswers.answer3;
         // set type attribute of submit to each button
         answer1.setAttribute("type", "submit")
@@ -90,7 +89,7 @@ function startGame() {
         answer1.setAttribute("id", "submit-button")
         answer2.setAttribute("id", "submit-button")
         answer3.setAttribute("id", "submit-button")
-        // set data-answer attribute to verify if answer is correct
+        // set data-answer attribute to each button
         answer1.setAttribute("data-answer", "1")
         answer2.setAttribute("data-answer", "2")
         answer3.setAttribute("data-answer", "3")
@@ -98,35 +97,68 @@ function startGame() {
         answerArea.appendChild(answer1);
         answerArea.appendChild(answer2);
         answerArea.appendChild(answer3);
-        // on click, +1 current index number and rerun both the question and answers functions
+        // Click event listener
         answer1.addEventListener("click", function () {
-            // findCorrent()
-            questionIndex++;
-            renderQuestions();
-            renderAnswers();
+            console.log(questionIndex);
+            // parse the data-answer to return a number
             var answerData = parseInt(answer1.getAttribute("data-answer"));
-            console.log(answerData);
-            console.log(questions[questionIndex].correct);
+            console.log("data:", answerData);
+            console.log("correct:", questions[questionIndex].correct);
+            // if the data-answer is equal to the correct button number
             if (answerData === questions[questionIndex].correct) {
-                alert("yay");
-
+                // add 1 to your score
+                scoreCount++;
+                // else deduct time from timer
             }
+            // add 1 to the question index to cycle to next question
+            questionIndex++;
+            // if question index is 3 or less
+            if (questionIndex < 4) {
+                // run next question
+                renderQuestions();
+                // run next series of answers
+                renderAnswers();
+            } else {
+                alert("yay");
+            }
+            // else render results
 
         })
         answer2.addEventListener("click", function () {
-            // findCorrent()
+            console.log(questionIndex);
+            var answerData = parseInt(answer2.getAttribute("data-answer"));
+            console.log("data:", answerData);
+            console.log("correct:", questions[questionIndex].correct);
+            if (answerData === questions[questionIndex].correct) {
+                scoreCount++;
+            }
             questionIndex++;
-            renderQuestions();
-            renderAnswers();
-            console.log(answer2.getAttribute("data-answer"));
-
+            if (questionIndex < 4) {
+                // run next question
+                renderQuestions();
+                // run next series of answers
+                renderAnswers();
+            } else {
+                alert("yay");
+            }
         })
         answer3.addEventListener("click", function () {
-            // findCorrent()
+            console.log(questionIndex);
+            var answerData = parseInt(answer3.getAttribute("data-answer"));
+            console.log("data:", answerData);
+            console.log("correct:", questions[questionIndex].correct);
+            if (answerData === questions[questionIndex].correct) {
+                scoreCount++;
+            }
             questionIndex++;
-            renderQuestions();
-            renderAnswers();
-            console.log(answer3.getAttribute("data-answer"));
+            if (questionIndex < 4) {
+                // run next question
+                renderQuestions();
+                // run next series of answers
+                renderAnswers();
+            } else {
+                alert("yay");
+            }
 
         })
 
