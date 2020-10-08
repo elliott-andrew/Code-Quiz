@@ -83,6 +83,7 @@ function startGame() {
         yourQuestion = questions[questionIndex]
         // replaces questionDisplay with the content of the current question
         questionDisplay.textContent = yourQuestion.question;
+        console.log("before", questionIndex);
     }
 
     // display the answers and check if correct
@@ -128,15 +129,24 @@ function startGame() {
                     scoreCount++
                     console.log("Your ", scoreCount);
                 }
+                questionIndex++;
+                // if there are less than 4 remaining questions
+                if (questionIndex < 4) {
+                    // display the questions
+                    renderQuestions();
+                    // display the answer
+                    renderAnswers;
+                } else {
+                    renderResults();
+                }
 
             }
-
+            console.log("after", questionIndex);
         });
     }
 
     function renderResults() {
         // empty out the time element
-        timeDisplay.textContent = " ";
         answerArea.innerHTML = " ";
 
         questionDisplay.textContent = scoreCount + "/4 correct!";
