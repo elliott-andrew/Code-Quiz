@@ -7,7 +7,7 @@ var nameInput = document.querySelector("#name");
 var signUpButton = document.querySelector("#sign-up");
 var msgDiv = document.querySelector("#msg");
 var userNameSpan = document.querySelector("#user-name");
-var scoreSpan = document.querySelector("#user-score");
+var scoreSpan = document.querySelector("#user-score")
 var resultsSection = document.querySelector("#results");
 
 // Data
@@ -222,24 +222,25 @@ function startGame() {
         function renderLastRegistered() {
             var lastName = localStorage.getItem("name");
             var lastScore = localStorage.getItem("score");
-            if (!lastName || !lastScore) {
+            if (!lastName) {
                 return;
             }
             userNameSpan.textContent = lastName;
-
+            scoreSpan.textContent = lastScore;
         }
 
         signUpButton.addEventListener("click", function (event) {
             event.preventDefault();
 
             var name = document.querySelector("#name").value;
-
+            var score = scoreCount;
             if (name === "") {
                 displayMessage("error", "Name cannot be blank");
             } else {
                 displayMessage("success", "Registered successfully");
                 // Save email and password to localStorage and render the last registered.
                 localStorage.setItem("name", name);
+                localStorage.setItem("score", score);
                 renderLastRegistered();
             }
         });
