@@ -219,6 +219,8 @@ function startGame() {
         restart.textContent = "Restart"
         // place the button in on the screen
         answerArea.appendChild(restart);
+        // display the users current score to be sumitted 
+        yourScore.textContent = scoreCount;
 
         // display success notification when name is submitted
         function displayMessage(type, message) {
@@ -240,8 +242,6 @@ function startGame() {
             userNameSpan.textContent = lastName;
             // fill the score space with the last saved score
             scoreSpan.textContent = lastScore;
-            // display the users current score to be sumitted 
-            yourScore.textContent = scoreCount;
         }
         // sign up button click event
         signUpButton.addEventListener("click", function (event) {
