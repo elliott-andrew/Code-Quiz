@@ -72,7 +72,7 @@ function startGame() {
             timeDisplay.textContent = secondsLeft + " seconds left";
 
             // check if we are out of time
-            if (secondsLeft === 0) {
+            if (secondsLeft < 1) {
                 // if so, sotp the timer
                 clearInterval(timerInterval);
                 // trigger the message
@@ -133,6 +133,8 @@ function startGame() {
                 // increase score by 1
                 scoreCount++;
                 // else deduct time from timer
+            } else {
+                secondsLeft -= 10;;
             }
             // add 1 to the question index
             questionIndex++;
@@ -142,6 +144,8 @@ function startGame() {
                 renderQuestions();
                 // run next series of answers
                 renderAnswers();
+            } else if (secondsLeft < 1) {
+                renderResults();
             } else {
                 // else render results
                 renderResults();
@@ -157,6 +161,10 @@ function startGame() {
                 // increase score by 1
                 scoreCount++;
                 // else deduct time from timer
+            } else if (secondsLeft < 1) {
+                renderResults();
+            } else {
+                secondsLeft -= 10;;
             }
             // add 1 to the question index to cycle to next question
             questionIndex++;
@@ -166,6 +174,8 @@ function startGame() {
                 renderQuestions();
                 // run next series of answers
                 renderAnswers();
+            } else if (secondsLeft < 1) {
+                renderResults();
             } else {
                 // else render results
                 renderResults();
@@ -180,6 +190,9 @@ function startGame() {
             if (answerData === questions[questionIndex].correct) {
                 // increase score by 1
                 scoreCount++;
+                // else deduct time from timer
+            } else {
+                secondsLeft -= 10;
             }
             // add 1 to the question index to cycle to next question
             questionIndex++;
