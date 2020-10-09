@@ -7,7 +7,8 @@ var nameInput = document.querySelector("#name");
 var signUpButton = document.querySelector("#sign-up");
 var msgDiv = document.querySelector("#msg");
 var userNameSpan = document.querySelector("#user-name");
-var scoreSpan = document.querySelector("#user-score")
+var scoreSpan = document.querySelector("#user-score");
+var yourScore = document.querySelector("#your-score");
 var resultsSection = document.querySelector("#results");
 
 // Data
@@ -227,6 +228,7 @@ function startGame() {
             }
             userNameSpan.textContent = lastName;
             scoreSpan.textContent = lastScore;
+            yourScore.textContent = scoreCount;
         }
 
         signUpButton.addEventListener("click", function (event) {
