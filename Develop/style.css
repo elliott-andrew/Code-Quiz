@@ -59,3 +59,8 @@ p {
     text-align: center;
 }
 
+.card {
+    border: none;
+    margin-top: 30px;
+}
+
