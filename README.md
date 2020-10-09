@@ -13,4 +13,4 @@ Build a timed coding quiz with multiple-choice questions. The app needs to run i
 ## URL to Working Page
 [https://elliott-andrew.github.io/Code-Quiz/](https://elliott-andrew.github.io/Code-Quiz/)
 
-![gif of website](https://raw.githubusercontent.com/elliott-andrew/Code-Quiz/main/Assets/Screen-Recording-720.gif)
+![gif of website](https://raw.githubusercontent.com/elliott-andrew/Code-Quiz/main/Assets/Screen-Recording-720-4.gif)
