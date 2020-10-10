@@ -13,40 +13,40 @@ var resultsSection = document.querySelector("#results");
 
 // Data
 // All questions and answers
-var questions = [
+let quiz = [
     {
         question: "What does HTML stand for?",
-        answer1: "Hypertext Markdown Language",
-        answer2: "Hypertext Markup Language",
-        answer3: "Hypertext Marky Mark Language",
-        correct: 2
+        choices: [
+            "Hypertext Markdown Language",
+            "Hypertext Markup Language",
+            "Hypertext Marky Mark Language"
+        ],
+        answer: "2"
     },
-
     {
         question: "What does CSS stand for?",
-        answer1: "Cascading Stylesheet",
-        answer2: "Flowing Stylesheet",
-        answer3: "Shading Stylesheet",
-        correct: 1
+        choices: [
+            "Cascading Stylesheet",
+            "Flowing Stylesheet",
+            "Shading Stylesheet"
+        ],
+        answer: "1"
     },
-
     {
-        question: "What is Javascript",
-        answer1: "A typeface",
-        answer2: "A coffee brand",
-        answer3: "A programming language",
-        correct: 3
+        question: "What is Javascript?",
+        choices: ["A typeface", "A coffee brand", "A programming language"],
+        answer: "3"
     },
-
     {
         question: "What does DOM stand for?",
-        answer1: "Document Object Model",
-        answer2: "Document Thingamajig",
-        answer3: "Donut Object Mmmmmm",
-        correct: 1
+        choices: [
+            "Document Object Model",
+            "Document Thingamajig",
+            "Donut Object Mmmmmm"
+        ],
+        answer: "1"
     }
-
-]
+];
 // Initial score
 var scoreCount = 0;
 // Initial time left
