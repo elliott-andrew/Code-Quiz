@@ -1,8 +1,8 @@
-// Dependencies (DOM elements)
-var questionDisplay = document.querySelector("#question")
-var answerArea = document.querySelector("#answer-area");
-var startButton = document.querySelector("#submit-button");
-var timeDisplay = document.querySelector("#time-left")
+// DOM elements
+var questionSection = document.querySelector("#question-area");
+var answerSection = document.querySelector("#answer-area");
+var scoreSection = document.querySelector("#score-area");
+var timeSection = document.querySelector("#time-area");
 var nameInput = document.querySelector("#name");
 var signUpButton = document.querySelector("#sign-up");
 var msgDiv = document.querySelector("#msg");
@@ -12,7 +12,7 @@ var yourScore = document.querySelector("#your-score");
 var resultsSection = document.querySelector("#results");
 
 // Data
-// All questions and answers
+// Questions, answers, correct answer
 let quiz = [
     {
         question: "What does HTML stand for?",
@@ -21,7 +21,7 @@ let quiz = [
             "Hypertext Markup Language",
             "Hypertext Marky Mark Language"
         ],
-        answer: "2"
+        answer: "1"
     },
     {
         question: "What does CSS stand for?",
@@ -30,12 +30,12 @@ let quiz = [
             "Flowing Stylesheet",
             "Shading Stylesheet"
         ],
-        answer: "1"
+        answer: "0"
     },
     {
         question: "What is Javascript?",
         choices: ["A typeface", "A coffee brand", "A programming language"],
-        answer: "3"
+        answer: "2"
     },
     {
         question: "What does DOM stand for?",
@@ -44,236 +44,206 @@ let quiz = [
             "Document Thingamajig",
             "Donut Object Mmmmmm"
         ],
-        answer: "1"
+        answer: "0"
     }
 ];
-// Initial score
+// Starting index
+var currentIndex = 0;
+// Starting score
 var scoreCount = 0;
-// Initial time left
+// Starting time
 var secondsLeft = 30;
-// Number of questions in quiz
-var numQuestions = questions.length;
-// Starting question index number
-var questionIndex = 0;
 
-// Helper functions
-// Starts game with click of start button
-startButton.addEventListener("click", function () {
-    startGame();
-});
-// Being the game
-function startGame() {
-    // Start the timer
-    function setTime() {
-        var timerInterval = setInterval(function () {
-            // knock a second off the clock
-            secondsLeft--;
-            // display the new countdown time
-            timeDisplay.textContent = secondsLeft + " seconds left";
+// Displays initial ready to begin message
+function clickToStart() {
+    // Create h2 element
+    var areYouReady = document.createElement("h2");
+    // Add message to h2 element
+    areYouReady.textContent = "Are you ready to test your knowledge?"
+    // Insert the message on the page
+    questionSection.appendChild(areYouReady);
+    // Create a start button
+    let button = document.createElement("button");
+    // Add text inside button
+    button.textContent = "Start";
+    // Set button type
+    button.setAttribute("type", "submit");
+    // Add button to the page
+    answerSection.appendChild(button);
+    // When user clicks start, quiz, time and score begin 
+    button.addEventListener("click", function () {
+        renderQuiz();
+        setTime();
+        addScore();
+    });
+}
+// Timer
+function setTime() {
+    var timerInterval = setInterval(function () {
+        timeSection.textContent = " ";
+        // Knock a second off the clock
+        secondsLeft--;
+        // Display the new countdown time
+        var time = document.createElement("p");
+        time.textContent = secondsLeft + " seconds left";
+        timeSection.appendChild(time)
+        // Check if we are out of time
+        if (secondsLeft <= 0 || currentIndex > 3) {
+            // if so, stop the timer
+            clearInterval(timerInterval);
+            // Clear the timer from the page
+            timeSection.textContent = " ";
+            // trigger the results
+            renderResults();
+        }
+    }, 1000);
+}
+// Score keeper 
+function addScore() {
+    // Clear the current score to replace with updated
+    scoreSection.innerHTML = " ";
+    // Create a p element to hold score
+    var score = document.createElement("p")
+    // Insert text to the score
+    score.textContent = "Your score is " + scoreCount + "/4 correct";
+    // Add the score to the page
+    scoreSection.appendChild(score);
+}
+// Quiz
+function renderQuiz() {
+    // Clear the current question to replace with updated
+    questionSection.innerHTML = " ";
+    // Clear the current answer to replace with updated
+    answerSection.innerHTML = " ";
 
-            // check if we are out of time
-            if (secondsLeft < 1) {
-                // if so, sotp the timer
-                clearInterval(timerInterval);
-                // trigger the results
-                renderResults();
-            }
-
-        }, 1000);
-    }
-    for (let i = 0; i < question.length; i++) {
-        var yourQuestion = question[i];
-        console.log(yourQuestion);
-    }
-    // Display and cycle through questions
+    // Insert questions on the page
     function renderQuestions() {
-        // pulls the current index number, adds it to the questions variable and attaches both to yourQuestion
-        var yourQuestion = questions[questionIndex]
-        // replaces questionDisplay with the content of the current question
-        questionDisplay.textContent = yourQuestion.question;
+        // Create an h2 element
+        let yourQuestion = document.createElement("h2");
+        // insert text to the h2 element
+        yourQuestion.textContent = quiz[currentIndex].question;
+        // Add the h2 element to the page
+        questionSection.appendChild(yourQuestion);
     }
 
-    // display the answers and check if correct
     function renderAnswers() {
-        // resets and clears the answer section for each click
-        answerArea.innerHTML = "";
-        // creates three buttons to hold each answer
-        var answer1 = document.createElement("button");
-        var answer2 = document.createElement("button");
-        var answer3 = document.createElement("button");
-        // pulls the current index number, adds it to the questions variable and attaches both to yourAnswers
-        yourAnswers = questions[questionIndex];
-        // adds current answer options to buttons
-        answer1.textContent = yourAnswers.answer1;
-        answer2.textContent = yourAnswers.answer2;
-        answer3.textContent = yourAnswers.answer3;
-        // set type attribute of submit to each button
-        answer1.setAttribute("type", "submit")
-        answer2.setAttribute("type", "submit")
-        answer3.setAttribute("type", "submit")
-        // set id of submit-button to each button
-        answer1.setAttribute("id", "submit-button")
-        answer2.setAttribute("id", "submit-button")
-        answer3.setAttribute("id", "submit-button")
-        // set data-answer attribute to each button
-        answer1.setAttribute("data-answer", "1")
-        answer2.setAttribute("data-answer", "2")
-        answer3.setAttribute("data-answer", "3")
-        // add each button to the answerArea space on page
-        answerArea.appendChild(answer1);
-        answerArea.appendChild(answer2);
-        answerArea.appendChild(answer3);
-        // Click event listener
-        answer1.addEventListener("click", function () {
-            // parse the data-answer to return a number
-            var answerData = parseInt(answer1.getAttribute("data-answer"));
-            // if the data-answer is equal to the correct button number
-            if (answerData === questions[questionIndex].correct) {
-                // increase score by 1
-                scoreCount++;
-                // else deduct time from timer
-            } else {
-                secondsLeft -= 10;
-            }
-            // add 1 to the question index
-            questionIndex++;
-            // if question index is 3 or less
-            if (questionIndex < 4) {
-                // run next question
-                renderQuestions();
-                // run next series of answers
-                renderAnswers();
-            } else if (secondsLeft < 1) {
-                renderResults();
-            } else {
-                // else render results
-                renderResults();
-            }
+        // Loop through each question's choices
+        for (i = 0; i < quiz[currentIndex].choices.length; i++) {
+            // Create a button element to hold each question
+            let button = document.createElement("button");
+            // Insert text to the button with corresponding options
+            button.textContent = quiz[currentIndex].choices[i];
+            // Add a number to track which button is clicked
+            button.setAttribute("data-answer", i);
+            // Add the button to the page
+            answerSection.appendChild(button);
 
-        })
-        answer2.addEventListener("click", function () {
-            // parse the data-answer to return a number
-            var answerData = parseInt(answer2.getAttribute("data-answer"));
-            // if the data-answer is equal to the correct button number
-            if (answerData === questions[questionIndex].correct) {
-                // increase score by 1
-                scoreCount++;
-                // else deduct time from timer
-            } else {
-                secondsLeft -= 10;;
-            }
-            // add 1 to the question index to cycle to next question
-            questionIndex++;
-            // if question index is 3 or less
-            if (questionIndex < 4) {
-                // run next question
-                renderQuestions();
-                // run next series of answers
-                renderAnswers();
-            } else if (secondsLeft < 1) {
-                renderResults();
-            } else {
-                // else render results
-                renderResults();
-            }
+            // Listen for button click
+            button.addEventListener("click", function () {
+                // Create a variable to hold the button's answer number
+                var buttonClicked = this.getAttribute("data-answer");
+                // Create a variable to hold the correct answer number
+                var correctButton = quiz[currentIndex].answer;
+                // Compare selected answer with correct answer
+                // If correct
+                if (buttonClicked === correctButton) {
+                    // Increase the score
+                    scoreCount++
+                    // Add it to the score
+                    addScore();
+                    // If not correct
+                } else {
+                    // Deduct from timer
+                    secondsLeft -= 10;
+                }
+                // Increase the number number to cycle to the next question
+                currentIndex++;
+                // Check how many questions are left
+                // If there are less than 4 questions
+                if (currentIndex < 4) {
+                    // Run the quiz function again
+                    renderQuiz();
+                    // if on last question
+                } else {
+                    // Display results
+                    renderResults()
+                }
+            });
+        };
+    };
 
-        })
-        answer3.addEventListener("click", function () {
-            // parse the data-answer to return a number
-            var answerData = parseInt(answer3.getAttribute("data-answer"));
-            // if the data-answer is equal to the correct button number
-            if (answerData === questions[questionIndex].correct) {
-                // increase score by 1
-                scoreCount++;
-                // else deduct time from timer
-            } else {
-                secondsLeft -= 10;
-            }
-            // add 1 to the question index to cycle to next question
-            questionIndex++;
-            // if question index is 3 or less
-            if (questionIndex < 4) {
-                // run next question
-                renderQuestions();
-                // run next series of answers
-                renderAnswers();
-            } else {
-                // else render results
-                renderResults();
-            }
-        })
-
-    }
-
-    function renderResults() {
-        // empty out the answer area
-        answerArea.innerHTML = " ";
-        timeDisplay.innerHTML = " ";
-        // Switch the results section class to make it visible
-        resultsSection.setAttribute("class", "col results");
-        // display the score
-        questionDisplay.textContent = scoreCount + "/4 correct!";
-        // create a restart button
-        var restart = document.createElement("button");
-        // set the button type to submit
-        restart.setAttribute("type", "submit");
-        // set id of submit-button
-        restart.setAttribute("id", "submit-button");
-        // on click refresh window
-        restart.setAttribute("onClick", "window.location.href=window.location.href")
-        // Add text to restart button
-        restart.textContent = "Restart"
-        // Place restart button
-        answerArea.appendChild(restart);
-
-        renderLastRegistered();
-        // Display success message when name registered
-        function displayMessage(type, message) {
-            msgDiv.textContent = message;
-            msgDiv.setAttribute("class", type);
-        }
-        // Display last registered name
-        function renderLastRegistered() {
-            // Pull the name from local storage
-            var lastName = localStorage.getItem("name");
-            // Pull the score from score storage
-            var lastScore = localStorage.getItem("score");
-            // if no name, do nothing
-            if (!lastName) {
-                return;
-            }
-            // add the last saved name
-            userNameSpan.textContent = lastName;
-            // add the last saved score
-            scoreSpan.textContent = lastScore;
-            // display user's current score
-            yourScore.textContent = scoreCount;
-        }
-        // Event listener for the register sign up button
-        signUpButton.addEventListener("click", function (event) {
-            // prevent the default
-            event.preventDefault();
-            // create a variable to hold the name
-            var name = document.querySelector("#name").value;
-            // set the score to the users current score
-            var score = scoreCount;
-            // if name is blank display error
-            if (name === "") {
-                displayMessage("error", "Name cannot be blank");
-            } else {
-                // else, show success message
-                displayMessage("success", "Registered successfully");
-                // Save email and password to localStorage and render the last registered.
-                localStorage.setItem("name", name);
-                localStorage.setItem("score", score);
-                renderLastRegistered();
-            }
-        });
-
-    }
-
-    setTime();
     renderQuestions();
     renderAnswers();
-    renderLastRegistered();
 }
+
+function renderResults() {
+    // empty out the answer area
+    answerSection.innerHTML = " ";
+    // empty out timer area
+    timeSection.innerHTML = " ";
+    // empty out score section
+    scoreSection.innerHTML = " ";
+    // Switch the results section class to make it visible
+    resultsSection.setAttribute("class", "col results");
+    // display the score
+    questionSection.textContent = scoreCount + "/4 correct!";
+    // create a restart button
+    var restart = document.createElement("button");
+    // set the button type to submit
+    restart.setAttribute("type", "submit");
+    // set id of submit-button
+    restart.setAttribute("id", "submit-button");
+    // on click refresh window
+    restart.setAttribute("onClick", "window.location.href=window.location.href")
+    // Add text to restart button
+    restart.textContent = "Restart"
+    // Place restart button
+    answerSection.appendChild(restart);
+
+    renderLastRegistered();
+    // Display success message when name registered
+    function displayMessage(type, message) {
+        msgDiv.textContent = message;
+        msgDiv.setAttribute("class", type);
+    }
+    // Display last registered name
+    function renderLastRegistered() {
+        // Pull the name from local storage
+        var lastName = localStorage.getItem("name");
+        // Pull the score from score storage
+        var lastScore = localStorage.getItem("score");
+        // if no name, do nothing
+        if (!lastName) {
+            return;
+        }
+        // add the last saved name
+        userNameSpan.textContent = lastName;
+        // add the last saved score
+        scoreSpan.textContent = lastScore;
+        // display user's current score
+        yourScore.textContent = scoreCount;
+    }
+    // Event listener for the register sign up button
+    signUpButton.addEventListener("click", function (event) {
+        // prevent the default
+        event.preventDefault();
+        // create a variable to hold the name
+        var name = document.querySelector("#name").value;
+        // set the score to the users current score
+        var score = scoreCount;
+        // if name is blank display error
+        if (name === "") {
+            displayMessage("error", "Name cannot be blank");
+        } else {
+            // else, show success message
+            displayMessage("success", "Registered successfully");
+            // Save email and password to localStorage and render the last registered.
+            localStorage.setItem("name", name);
+            localStorage.setItem("score", score);
+            renderLastRegistered();
+        }
+    });
+
+}
+
+clickToStart();

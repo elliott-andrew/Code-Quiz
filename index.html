@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="Develop/style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -26,25 +26,20 @@
             </div>
         </div>
     </header>
-
+    <!-- Main -->
     <main class="container" id="main">
-        <!-- High score link and time left -->
+        <!--  Your Score  -->
         <section class="row">
-            <div class="col-12 pr-5 text-center" id="timer">
-                <p><span id="time-left">30 seconds left</span></p>
-            </div>
+            <div class="col" id="score-area"></div>
+            <div class="col" id="time-area"></div>
         </section>
         <!-- question section / intro message -->
         <section class="row">
-            <div class="col" id="question-area">
-                <h2 id="question">Are you ready to test your knowledge?</h2>
-            </div>
+            <div class="col" id="question-area"></div>
         </section>
         <!-- answer options / begin button -->
         <section class="row">
-            <div class="col" id="answer-area">
-                <button id="submit-button" type="submit">Start</button>
-            </div>
+            <div class="col" id="answer-area"></div>
         </section>
         <!-- win/lose notification -->
         <section class="row mx-auto" id="high-scores">
@@ -74,7 +69,7 @@
             </div>
         </section>
     </main>
+    <script src="script.js"></script>
 </body>
-<script src="Develop/script.js"></script>
 
 </html>
