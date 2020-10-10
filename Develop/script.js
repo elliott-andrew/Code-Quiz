@@ -56,22 +56,6 @@ var numQuestions = questions.length;
 // Starting question index number
 var questionIndex = 0;
 
-// new variable to test nesting arrays and index numbers
-// variable to hold questions
-var question = new Array("What does HTML stand for?", "What does CSS stand for?", "What is Javascript?", "What does DOM stand for?");
-// variable to hold choices
-var choices = new Array()
-// choices for question 1
-choices[1] = new Array("Hypertext Markdown Language", "Hypertext Markup Language", "Hypertext Markup Language");
-// choices for question 2
-choices[2] = new Array("Casecading Stylesheets", "Flowing Stylesheet", "Shading Stylesheet");
-// choices for question 3
-choices[3] = new Array("A typeface", "A coffee brand", "A programming language");
-// answers for each question
-var answer = new Array("2", "1", "3", "1");
-console.log(question[0] + " It stands for " + choices[1][1] + ". " + answer[0]);
-
-
 // Helper functions
 // Starts game with click of start button
 startButton.addEventListener("click", function () {
