@@ -194,7 +194,7 @@ function renderResults() {
     // set id of submit-button
     restart.setAttribute("id", "submit-button");
     // on click refresh window
-    restart.setAttribute("onClick", "window.location.href=window.location.href")
+    restart.setAttribute("onClick", "window.location.reload();")
     // Add text to restart button
     restart.textContent = "Restart"
     // Place restart button
