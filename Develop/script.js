@@ -97,10 +97,14 @@ function startGame() {
 
         }, 1000);
     }
+    for (let i = 0; i < question.length; i++) {
+        var yourQuestion = question[i];
+        console.log(yourQuestion);
+    }
     // Display and cycle through questions
     function renderQuestions() {
         // pulls the current index number, adds it to the questions variable and attaches both to yourQuestion
-        yourQuestion = questions[questionIndex]
+        var yourQuestion = questions[questionIndex]
         // replaces questionDisplay with the content of the current question
         questionDisplay.textContent = yourQuestion.question;
     }
@@ -220,6 +224,7 @@ function startGame() {
     function renderResults() {
         // empty out the answer area
         answerArea.innerHTML = " ";
+        timeDisplay.innerHTML = " ";
         // Switch the results section class to make it visible
         resultsSection.setAttribute("class", "col results");
         // display the score
