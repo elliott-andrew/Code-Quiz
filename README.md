@@ -10,7 +10,8 @@
   - [Installation](#Installation)
   - [Test](#Test)
   - [Start](#Start)
-  - [Usage](#Usage)
+  - [Working Link](#WorkingLink)
+  - [GitHub Link](#GithubLink)
   - [Contributing](#Contributing)
   - [License](#License)
   - [Questions](#Questions)
@@ -23,6 +24,8 @@
 
   ## Start
   npm start
+
+  ![https://raw.githubusercontent.com/elliott-andrew/Code-Quiz/main/Assets/Screen-Recording-720-4.gif](https://raw.githubusercontent.com/elliott-andrew/Code-Quiz/main/Assets/Screen-Recording-720-4.gif)
 
 ## Working Link
 [https://elliott-andrew.github.io/Code-Quiz/](https://elliott-andrew.github.io/Code-Quiz/)
