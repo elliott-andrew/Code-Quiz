@@ -20,7 +20,7 @@
   ## Installation
   No dependencies.
 
-  ##Usage
+  ## Usage
   ![https://raw.githubusercontent.com/elliott-andrew/Code-Quiz/main/Assets/Screen-Recording-720-4.gif](https://raw.githubusercontent.com/elliott-andrew/Code-Quiz/main/Assets/Screen-Recording-720-4.gif)
 
 ## Working Link
