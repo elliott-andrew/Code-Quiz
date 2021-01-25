@@ -1,16 +1,40 @@
-# Code Quiz
 
-## My Task
+  
+  ![Badge for License](https://img.shields.io/badge/License-MIT%20License-green)
 
-Build a timed coding quiz with multiple-choice questions. The app needs to run in the browser, feature dynamically updated HTML and CSS while running on Javascript. Parameters for this activity were that questions display after the user presses start; when answers are incorrect, the user loses time, and the game ends upon the completion of all questions of the user running out of time. The user has the option to save their name and score locally.
+  # Code Quiz
+  ## Description
+  A timed coding quiz will multiple-choice questions. How many HTML, CSS, and Javascript questions will be correct, and how many will be wrong? Every wrong question causes a time loss. Run out of time, and the test will end. Get a name on the high score board to win.
 
+  ## Table of Contents
+  - [Installation](#Installation)
+  - [Test](#Test)
+  - [Start](#Start)
+  - [Usage](#Usage)
+  - [Contributing](#Contributing)
+  - [License](#License)
+  - [Questions](#Questions)
 
-## URL to GitHub Repo
+  ## Installation
+  No dependencies.
 
-[https://github.com/elliott-andrew/Code-Quiz](https://github.com/elliott-andrew/Code-Quiz)
+  ## Test
+  npm test
 
+  ## Start
+  npm start
 
-## URL to Working Page
+## Working Link
 [https://elliott-andrew.github.io/Code-Quiz/](https://elliott-andrew.github.io/Code-Quiz/)
 
-![gif of website](https://raw.githubusercontent.com/elliott-andrew/Code-Quiz/main/Assets/Screen-Recording-720-4.gif)
+## GitHub Link
+[https://github.com/elliott-andrew/Code-Quiz](https://github.com/elliott-andrew/Code-Quiz)
+
+  ## Contributing
+  Fork it and have fun!
+
+  ## License
+  MIT License
+
+  ## Questions
+  Contact me by email at andrew@elliottandrew.com, or on GitHub at [@elliott-andrew](https://www.github.com/elliott-andrew)
